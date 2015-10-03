@@ -13,5 +13,5 @@ Reads and edits game's saved data. File must be decrypted.
 
 These tools are not made or supported by BANDAI NAMCO Entertainment Inc. or its affiliates.
 
-Saint Seiya © Masami Kurumada, Toei Animation
+Saint Seiya © Masami Kurumada, Toei Animation <br />
 Game © 2015 BANDAI NAMCO Entertainment Inc.
