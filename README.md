@@ -9,7 +9,8 @@ Reads TDB files.
 - Language: Java
 
 ## Soul Save Editor
-Reads and edits game's saved data. File must be decrypted.
+Reads and edits game's saved data, for PC or PS3.
+PS3's savedata file must be decrypted with third-party tools.
 - Language: Visual Basic (.NET Framework 4.5)
 
 --------------------------------------------------------

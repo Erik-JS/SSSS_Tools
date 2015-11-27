@@ -31,6 +31,8 @@
                 Me.Text &= " - Assist Phrases"
             Case CollectionType.PlayableStages
                 Me.Text &= " - Playable Stages"
+                DescriptionFile = "DESC_PLAYABLESTAGES.TXT"
+                ListCount = Savedata.PLAYABLESTAGECOUNT
         End Select
         Target = CollectionTarget
     End Sub
@@ -67,6 +69,7 @@
         Try
             strLines = System.IO.File.ReadAllLines(DescriptionFile)
         Catch ex As Exception
+            System.Diagnostics.Debug.Print("InitializeDescriptions / " & ex.GetType().Name & ": " & ex.Message)
             Exit Sub
         End Try
 
@@ -95,7 +98,8 @@
                 Case CollectionType.AssistPhrases
                     'placeholder
                 Case CollectionType.PlayableStages
-                    'placeholder
+                    If Savedata.IsLockedPlayableStage(I) Then Continue For
+                    UnlockedIndexes.Add(I)
             End Select
         Next I
 
@@ -131,7 +135,7 @@
             Case CollectionType.AssistPhrases
                 'placeholder
             Case CollectionType.PlayableStages
-                'placeholder
+                Savedata.LockPlayableStage(ItemIdx)
         End Select
     End Sub
 
@@ -142,7 +146,7 @@
             Case CollectionType.AssistPhrases
                 'placeholder
             Case CollectionType.PlayableStages
-                'placeholder
+                Savedata.UnlockPlayableStage(ItemIdx)
         End Select
     End Sub
 

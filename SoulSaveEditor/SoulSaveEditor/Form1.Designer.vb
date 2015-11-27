@@ -36,6 +36,8 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblFile = New System.Windows.Forms.Label()
         Me.lblBuild = New System.Windows.Forms.Label()
+        Me.lblPlatform = New System.Windows.Forms.Label()
+        Me.PlayableStagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -59,37 +61,37 @@ Partial Class Form1
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'SaveAsToolStripMenuItem
         '
         Me.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem"
-        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveAsToolStripMenuItem.Text = "Save as..."
         '
         'mnuSeparator1
         '
         Me.mnuSeparator1.Name = "mnuSeparator1"
-        Me.mnuSeparator1.Size = New System.Drawing.Size(143, 6)
+        Me.mnuSeparator1.Size = New System.Drawing.Size(149, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'CollectionToolStripMenuItem
         '
-        Me.CollectionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PlayableCharactersToolStripMenuItem})
+        Me.CollectionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PlayableCharactersToolStripMenuItem, Me.PlayableStagesToolStripMenuItem})
         Me.CollectionToolStripMenuItem.Name = "CollectionToolStripMenuItem"
         Me.CollectionToolStripMenuItem.Size = New System.Drawing.Size(73, 20)
         Me.CollectionToolStripMenuItem.Text = "Collection"
@@ -110,7 +112,7 @@ Partial Class Form1
         'CosmoPointsToolStripMenuItem
         '
         Me.CosmoPointsToolStripMenuItem.Name = "CosmoPointsToolStripMenuItem"
-        Me.CosmoPointsToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.CosmoPointsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CosmoPointsToolStripMenuItem.Text = "Cosmo Points"
         '
         'Label1
@@ -144,11 +146,28 @@ Partial Class Form1
         Me.lblBuild.TabIndex = 3
         Me.lblBuild.Text = "Build date......."
         '
+        'lblPlatform
+        '
+        Me.lblPlatform.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblPlatform.Location = New System.Drawing.Point(434, 187)
+        Me.lblPlatform.Name = "lblPlatform"
+        Me.lblPlatform.Size = New System.Drawing.Size(93, 30)
+        Me.lblPlatform.TabIndex = 4
+        Me.lblPlatform.Text = "..."
+        Me.lblPlatform.TextAlign = System.Drawing.ContentAlignment.TopRight
+        '
+        'PlayableStagesToolStripMenuItem
+        '
+        Me.PlayableStagesToolStripMenuItem.Name = "PlayableStagesToolStripMenuItem"
+        Me.PlayableStagesToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.PlayableStagesToolStripMenuItem.Text = "Playable Stages"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(527, 214)
+        Me.Controls.Add(Me.lblPlatform)
         Me.Controls.Add(Me.lblBuild)
         Me.Controls.Add(Me.lblFile)
         Me.Controls.Add(Me.Label1)
@@ -179,5 +198,7 @@ Partial Class Form1
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblFile As System.Windows.Forms.Label
     Friend WithEvents lblBuild As System.Windows.Forms.Label
+    Friend WithEvents lblPlatform As System.Windows.Forms.Label
+    Friend WithEvents PlayableStagesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

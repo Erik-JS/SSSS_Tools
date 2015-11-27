@@ -4,15 +4,20 @@
 
         Public Const EXPECTEDFILESIZE As Integer = 25336
         Public Const PLAYABLECHARACTERCOUNT As Integer = 147
+        Public Const PLAYABLESTAGECOUNT As Integer = 40
 
         Public Shared Content() As Byte = Nothing
+        Public Shared IsLittleEndian As Boolean
 
-        Public Shared Function LoadFromFile(ByVal file As String) As Boolean
+        Public Shared Function LoadFromFile(ByVal file As String, ByVal flagPC As Boolean) As Boolean
             ' it's called from form1, so file probably exists...
             Try
                 Dim b() As Byte = IO.File.ReadAllBytes(file)
                 If BitConverter.ToInt32(b, 0) <> &H56415323 Then
-                    MessageBox.Show("Missing #SAV identifier." & vbCrLf & vbCrLf & "If you think this is the correct file, make sure it has been decrypted first.", "Invalid file", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                    Dim strMsg As String = "Missing #SAV identifier."
+                    ' make sure the part about decrypting the file only appears if the file is supposed to be from PS3
+                    If Not flagPC Then strMsg &= vbCrLf & vbCrLf & "If you think this is the correct file, make sure it has been decrypted first."
+                    MessageBox.Show(strMsg, "Invalid file", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Return False
                 End If
                 If b.Length <> EXPECTEDFILESIZE Then
@@ -39,6 +44,7 @@
 
         Public Shared Function GetInt32(ByVal Index As Integer) As Integer
             Dim tempValue As Integer = BitConverter.ToInt32(Content, Index)
+            If IsLittleEndian Then Return tempValue
             Dim bytes() As Byte = BitConverter.GetBytes(tempValue)
             Array.Reverse(bytes)
             Return BitConverter.ToInt32(bytes, 0)
@@ -46,10 +52,17 @@
 
         Public Shared Sub SetInt32(ByVal Index As Integer, ByVal Value As Integer)
             Dim bytes() As Byte = BitConverter.GetBytes(Value)
-            Content(Index) = bytes(3)
-            Content(Index + 1) = bytes(2)
-            Content(Index + 2) = bytes(1)
-            Content(Index + 3) = bytes(0)
+            If IsLittleEndian Then
+                Content(Index) = bytes(0)
+                Content(Index + 1) = bytes(1)
+                Content(Index + 2) = bytes(2)
+                Content(Index + 3) = bytes(3)
+            Else
+                Content(Index) = bytes(3)
+                Content(Index + 1) = bytes(2)
+                Content(Index + 2) = bytes(1)
+                Content(Index + 3) = bytes(0)
+            End If
         End Sub
 
         Public Shared Function GetCosmoPoints() As Integer
@@ -71,6 +84,18 @@
 
         Public Shared Function IsLockedPlayableCharacter(ByVal index As Integer) As Boolean
             Return GetInt32(index * 4 + &HF4) = 0
+        End Function
+
+        Public Shared Sub LockPlayableStage(ByVal index As Integer)
+            SetInt32(index * 4 + &H1614, 0)
+        End Sub
+
+        Public Shared Sub UnlockPlayableStage(ByVal index As Integer)
+            SetInt32(index * 4 + &H1614, 1)
+        End Sub
+
+        Public Shared Function IsLockedPlayableStage(ByVal index As Integer) As Boolean
+            Return GetInt32(index * 4 + &H1614) = 0
         End Function
 
     End Class
