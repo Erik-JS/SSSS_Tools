@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 // bunch of static shit here, folks
 // the program reads one file at a time, so I don't need to create multiple
 // instances of TextDataBase.
-// TextDataBase's properties and methods updates themselves first by calling LoadTextFromFile 
+// TextDataBase's properties and methods update themselves first by calling LoadTextFromFile 
 
 public class TextDataBase {
 	private static boolean isReady = false;
@@ -41,6 +41,10 @@ public class TextDataBase {
 	public static int GetLineCount(){
 		return lineCount;
 	}
+	public static java.nio.ByteOrder Endianness(){
+		return bb.order();
+	}
+	
 	public static String GetLine(int lineNumber, int langCode){
 		if (lineNumber>lineCount||lineNumber<=0) return null;
 		if ( langCode >= COUNT_LANGUAGES || langCode < 0) return null;
@@ -75,27 +79,42 @@ public class TextDataBase {
 			JOptionPane.showMessageDialog(null, "Invalid file. Missing signature.");
 			return false;
 		}
-		int lc = bb.getInt(4);
-		if(lc==0) {
+		int lcb = bb.getInt(4); // read line count as big endian
+		bb.order(ByteOrder.LITTLE_ENDIAN);
+		int lcl = bb.getInt(4); // read line count as little endian
+		if(lcl==lcb && lcl==0) {
 			JOptionPane.showMessageDialog(null, "File seems valid, but line count is zero.");
 			return false;
 		}
-		lineCount = lc;
+		// both vars are something other than 0
+		lcb &= 0x0000FFFF;
+		lcl &= 0x0000FFFF;
+		// 0x12345678 & 0x0000FFFF => 0x00005678
+		// now, whichever is 0 must've been read from "wrong" endianness
+		if(lcl == 0) {
+			// byte order is big endian
+			bb.order(ByteOrder.BIG_ENDIAN);
+			lineCount = lcb;
+		}
+		else {
+			// byte order is little endian
+			lineCount = lcl;
+		}
 		// Initialize all language arrays with x lines.
 		// No missing languages in SS, they were between Spanish and Portuguese
 		// Italian and French switched places...
-		JapaneseLines = new String[lc];
-		EnglishLines = new String[lc];
-		FrenchLines = new String[lc];
-		ItalianLines = new String[lc];
-		SpanishLines = new String[lc];
-		PortugueseLines = new String[lc];
-		NewLanguage1Lines = new String[lc];
-		NewLanguage2Lines = new String[lc];
+		JapaneseLines = new String[lineCount];
+		EnglishLines = new String[lineCount];
+		FrenchLines = new String[lineCount];
+		ItalianLines = new String[lineCount];
+		SpanishLines = new String[lineCount];
+		PortugueseLines = new String[lineCount];
+		NewLanguage1Lines = new String[lineCount];
+		NewLanguage2Lines = new String[lineCount];
 		// Set initial value for read index
 		rIndex = 0x10;
 		// Start looping through lines
-		for (int line = 0; line<lc; line++){
+		for (int line = 0; line<lineCount; line++){
 			// read line id
 			// int lineID = bb.getInt(rIndex); // but it's not needed currently
 			// (lineID==line) should return true anyway
@@ -160,7 +179,5 @@ public class TextDataBase {
 		 }  
 		 return buffer;
 	}
-	
-
 
 }

@@ -5,6 +5,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.nio.ByteOrder;
 
 
 
@@ -20,7 +21,8 @@ public class TDBReader extends JFrame {
 	public JTextArea txtLines;
 	public JFileChooser fileChooser;
 	public File tdbFile;
-	public JScrollPane scrollPane; 
+	public JScrollPane scrollPane;
+	public JLabel lblEndian;
 	
 	public TDBReader(){
 		getContentPane().setLayout(null);
@@ -58,6 +60,10 @@ public class TDBReader extends JFrame {
 		txtLines.setFont(new Font("Meiryo",Font.PLAIN,13));
 		txtLines.setEditable(false);
 		scrollPane.setViewportView(txtLines);
+		
+		lblEndian = new JLabel();
+		lblEndian.setBounds(10, 66, 89, 14);
+		getContentPane().add(lblEndian);
 		
 		fileChooser = new JFileChooser();
 		FileFilter filter = new FileNameExtensionFilter("TDB files", "tdb");
@@ -115,7 +121,6 @@ public class TDBReader extends JFrame {
 		txtLines.setText(myStr);
 		// this should make scrollPane go back to the top
 		txtLines.setCaretPosition(0);;
-		
 	}
 	
 	private void btnOpen_clicked(){
@@ -127,8 +132,9 @@ public class TDBReader extends JFrame {
 				txtFile.setText(tdbFile.toString());
 				// load text based on current selection on the combo box
 				cboLanguage_changed(cboLanguage.getSelectedIndex());
+				// show platform based on detected endianness
+				lblEndian.setText(TextDataBase.Endianness() == ByteOrder.BIG_ENDIAN ? "PS3": "PC");
 			}
 		}
-		
 	}
 }
