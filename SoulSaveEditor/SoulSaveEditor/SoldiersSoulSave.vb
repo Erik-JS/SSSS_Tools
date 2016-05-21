@@ -148,6 +148,22 @@
             Return GetInt32(index * 4 + &H5810)
         End Function
 
+        Public Shared Sub SetTimeGameTotal(ByVal seconds As Integer)
+            SetInt32(&H388C, seconds * 60)
+        End Sub
+
+        Public Shared Function GetTimeGameTotal() As Integer
+            Return GetInt32(&H388C) / 60
+        End Function
+
+        Public Shared Sub SetTimeOnlinePlay(ByVal seconds As Integer)
+            SetInt32(&H3890, seconds * 60)
+        End Sub
+
+        Public Shared Function GetTimeOnlinePlay() As Integer
+            Return GetInt32(&H3890) / 60
+        End Function
+
     End Class
 
     ' XHashtable = Hashtable + List
