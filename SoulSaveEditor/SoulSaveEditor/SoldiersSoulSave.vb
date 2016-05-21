@@ -98,6 +98,56 @@
             Return GetInt32(index * 4 + &H1614) = 0
         End Function
 
+        Public Enum BattleOfGoldIndex As Integer
+            ARI_1 = 0 ' 0, 1, 2, 3, 4 (locked, unlocked, lit, completed, completed with S rank)
+            ARI_2 = 1
+            ARI_3 = 2
+            TAU_1 = 3
+            TAU_2 = 4
+            TAU_3 = 5
+            GEM_1 = 6
+            GEM_2 = 7
+            GEM_3 = 8
+            CAN_1 = 9
+            CAN_2 = 10
+            CAN_3 = 11
+            LEO_1 = 12
+            LEO_2 = 13
+            LEO_3 = 14
+            VIR_1 = 15
+            VIR_2 = 16
+            VIR_3 = 17
+            LIB_1 = 18
+            LIB_2 = 19
+            LIB_3 = 20
+            SCO_1 = 21
+            SCO_2 = 22
+            SCO_3 = 23
+            SAG_1 = 24
+            SAG_2 = 25
+            SAG_3 = 26
+            CAP_1 = 27
+            CAP_2 = 28
+            CAP_3 = 29
+            AQU_1 = 30
+            AQU_2 = 31
+            AQU_3 = 32
+            PIS_1 = 33
+            PIS_2 = 34
+            PIS_3 = 35
+            ANOTHER = 36 ' 0, 1 (locked, unlocked)
+            INTRO = 37 ' 0, 1 (not played yet, already played)
+            EXPL_ANOTHER = 38 ' 0, 1 (not seen yet, already seen)
+        End Enum
+
+        Public Shared Sub SetBattleOfGoldVar(ByVal index As BattleOfGoldIndex, ByVal value As Integer)
+            SetInt32(index * 4 + &H5810, value)
+        End Sub
+
+        Public Shared Function GetBattleOfGoldVar(ByVal index As BattleOfGoldIndex) As Integer
+            Return GetInt32(index * 4 + &H5810)
+        End Function
+
     End Class
 
     ' XHashtable = Hashtable + List
