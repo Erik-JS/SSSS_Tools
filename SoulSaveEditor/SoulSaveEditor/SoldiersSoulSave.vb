@@ -164,6 +164,29 @@
             Return GetInt32(&H3890) / 60
         End Function
 
+        Public Enum ItemState As Integer
+            Locked = 0
+            UnlockedNew = 1
+            Unlocked = 2
+            UnlockedAccessed = 3
+        End Enum
+
+        Public Shared Sub SetGalleryMovieState(ByVal index As Integer, ByVal state As ItemState)
+            SetInt32(index * 4 + &H4840, state)
+        End Sub
+
+        Public Shared Function GetGalleryMovieState(ByVal index As Integer) As ItemState
+            Return GetInt32(index * 4 + &H4840)
+        End Function
+
+        Public Shared Sub SetGalleryBGMState(ByVal index As Integer, ByVal state As ItemState)
+            SetInt32(index * 4 + &H479C, state)
+        End Sub
+
+        Public Shared Function GetGalleryBGMState(ByVal index As Integer) As ItemState
+            Return GetInt32(index * 4 + &H479C)
+        End Function
+
     End Class
 
     ' XHashtable = Hashtable + List
