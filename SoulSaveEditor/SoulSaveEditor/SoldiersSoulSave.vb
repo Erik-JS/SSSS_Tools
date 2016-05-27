@@ -160,6 +160,22 @@
             Return GetInt32(index * 4 + &H5810)
         End Function
 
+        Public Shared Function GetPointBursts() As Byte
+            Return Content(&H58AC)
+        End Function
+
+        Public Shared Sub SetPointBursts(ByVal value As Byte)
+            Content(&H58AC) = value
+        End Sub
+
+        Public Shared Function GetTorches() As Byte
+            Return Content(&H58AD)
+        End Function
+
+        Public Shared Sub SetTorches(ByVal value As Byte)
+            Content(&H58AD) = value
+        End Sub
+
         Public Shared Sub SetTimeGameTotal(ByVal seconds As Integer)
             SetInt32(&H388C, seconds * 60)
         End Sub

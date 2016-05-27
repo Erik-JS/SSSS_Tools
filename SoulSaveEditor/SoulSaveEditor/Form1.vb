@@ -10,6 +10,7 @@
         StatsToolStripMenuItem.Enabled = False
         SaveToolStripMenuItem.Enabled = False
         SaveAsToolStripMenuItem.Enabled = False
+        ProgressToolStripMenuItem.Enabled = False
         lblBuild.Text = RetrieveAppLinkerTimestampString()
     End Sub
 
@@ -28,6 +29,7 @@
             StatsToolStripMenuItem.Enabled = True
             SaveToolStripMenuItem.Enabled = True
             SaveAsToolStripMenuItem.Enabled = True
+            ProgressToolStripMenuItem.Enabled = True
             lblFile.Text = openDialog.FileName
             lblFile.ForeColor = Color.Blue
             Savedata.IsLittleEndian = IsPCVersion
@@ -86,4 +88,8 @@
         lblFile.ForeColor = Color.Red
     End Sub
 
+    Private Sub BattleOfGoldToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BattleOfGoldToolStripMenuItem.Click
+        Dim bogform As New frmBattleOfGold()
+        If bogform.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then lblFile.ForeColor = Color.Red
+    End Sub
 End Class

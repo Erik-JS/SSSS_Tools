@@ -77,6 +77,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmBattleOfGold.Designer.vb">
+      <DependentUpon>frmBattleOfGold.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBattleOfGold.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmCollection.Designer.vb">
       <DependentUpon>frmCollection.vb</DependentUpon>
     </Compile>
@@ -103,6 +109,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBattleOfGold.resx">
+      <DependentUpon>frmBattleOfGold.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCollection.resx">
       <DependentUpon>frmCollection.vb</DependentUpon>
