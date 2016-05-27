@@ -187,6 +187,26 @@
             Return GetInt32(index * 4 + &H479C)
         End Function
 
+        Public Shared Sub LockBBA(ByVal charindex As Integer, ByVal bbaindex As Integer)
+            SetInt32(&H358 + charindex * &H30 + bbaindex * 4 + &H18, 1)
+        End Sub
+
+        Public Shared Sub UnlockBBA(ByVal charindex As Integer, ByVal bbaindex As Integer)
+            SetInt32(&H358 + charindex * &H30 + bbaindex * 4 + &H18, 0)
+        End Sub
+
+        Public Shared Function IsLockedBBA(ByVal charindex As Integer, ByVal bbaindex As Integer) As Boolean
+            Return GetInt32(&H358 + charindex * &H30 + bbaindex * 4 + &H18) <> 0
+        End Function
+
+        Public Shared Sub SetGalleryBBAState(ByVal charindex As Integer, ByVal bbaindex As Integer, ByVal state As Integer)
+            SetInt32(&H358 + charindex * &H30 + bbaindex * 4, state)
+        End Sub
+
+        Public Shared Function GetGalleryBBAState(ByVal charindex As Integer, ByVal bbaindex As Integer)
+            Return GetInt32(&H358 + charindex * &H30 + bbaindex * 4)
+        End Function
+
     End Class
 
     ' XHashtable = Hashtable + List
