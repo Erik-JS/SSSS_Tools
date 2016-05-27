@@ -18,7 +18,7 @@
         Dim openDialog As New OpenFileDialog
         Dim IsPCVersion As Boolean = True
 
-        openDialog.Filter = "PS3 (*.DAT)|*.DAT|PC (ssss-savedata*)|ssss-savedata*"
+        openDialog.Filter = "PS3 or PC|*.dat; ssss-savedata0"
 
         If openDialog.ShowDialog() <> Windows.Forms.DialogResult.OK Then Exit Sub
 
