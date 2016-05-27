@@ -36,13 +36,16 @@
     End Sub
 
     Private Sub CosmoPointsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CosmoPointsToolStripMenuItem.Click
-        Dim intCP = Savedata.GetCosmoPoints()
+        Dim intCP = Savedata.GetCosmoPointsCurrent()
         Dim Message As String = "Please enter ammount of cosmo points." & vbCrLf & "Current ammount: " & intCP
         Dim strCP As String = InputBox(Message, "Cosmo Points")
-        If Integer.TryParse(strCP, intCP) Then
-            Savedata.SetCosmoPoints(intCP)
-            lblFile.ForeColor = Color.Red
+        If Not Integer.TryParse(strCP, intCP) Then Exit Sub
+        If intCP < 0 Then
+            MsgBox("Invalid ammount: negative number.")
+            Exit Sub
         End If
+        Savedata.AdjustCosmoPoints(intCP - Savedata.GetCosmoPointsCurrent())
+        lblFile.ForeColor = Color.Red
     End Sub
 
     Private Sub PlayableCharactersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PlayableCharactersToolStripMenuItem.Click

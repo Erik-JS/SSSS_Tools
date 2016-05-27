@@ -65,13 +65,25 @@
             End If
         End Sub
 
-        Public Shared Function GetCosmoPoints() As Integer
+        Public Shared Function GetCosmoPointsCurrent() As Integer
             Return GetInt32(&H6190)
         End Function
 
-        Public Shared Sub SetCosmoPoints(ByVal value As Integer)
+        Public Shared Sub SetCosmoPointsCurrent(ByVal value As Integer)
             SetInt32(&H6190, value)
+        End Sub
+
+        Public Shared Function GetCosmoPointsTotalEarned() As Integer
+            Return GetInt32(&H6194)
+        End Function
+
+        Public Shared Sub SetCosmoPointsTotalEarned(ByVal value As Integer)
             SetInt32(&H6194, value)
+        End Sub
+
+        Public Shared Sub AdjustCosmoPoints(ByVal value As Integer)
+            SetCosmoPointsCurrent(GetCosmoPointsCurrent() + value)
+            SetCosmoPointsTotalEarned(GetCosmoPointsTotalEarned() + value)
         End Sub
 
         Public Shared Sub LockPlayableCharacter(ByVal index As Integer)
