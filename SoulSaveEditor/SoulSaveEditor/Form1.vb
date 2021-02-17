@@ -92,4 +92,8 @@
         Dim bogform As New frmBattleOfGold()
         If bogform.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then lblFile.ForeColor = Color.Red
     End Sub
+
+    Private Sub CharacterModelsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CharacterModelsToolStripMenuItem.Click
+        ShowCollectionEditForm(frmCollection.CollectionType.CharacterModels)
+    End Sub
 End Class

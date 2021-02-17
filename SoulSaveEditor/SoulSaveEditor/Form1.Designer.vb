@@ -34,12 +34,13 @@ Partial Class Form1
         Me.PlayableStagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CosmoPointsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProgressToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BattleOfGoldToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblFile = New System.Windows.Forms.Label()
         Me.lblBuild = New System.Windows.Forms.Label()
         Me.lblPlatform = New System.Windows.Forms.Label()
-        Me.ProgressToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BattleOfGoldToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CharacterModelsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -63,37 +64,37 @@ Partial Class Form1
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'SaveAsToolStripMenuItem
         '
         Me.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem"
-        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
         Me.SaveAsToolStripMenuItem.Text = "Save as..."
         '
         'mnuSeparator1
         '
         Me.mnuSeparator1.Name = "mnuSeparator1"
-        Me.mnuSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.mnuSeparator1.Size = New System.Drawing.Size(143, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'CollectionToolStripMenuItem
         '
-        Me.CollectionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PlayableCharactersToolStripMenuItem, Me.PlayableStagesToolStripMenuItem})
+        Me.CollectionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PlayableCharactersToolStripMenuItem, Me.PlayableStagesToolStripMenuItem, Me.CharacterModelsToolStripMenuItem})
         Me.CollectionToolStripMenuItem.Name = "CollectionToolStripMenuItem"
         Me.CollectionToolStripMenuItem.Size = New System.Drawing.Size(73, 20)
         Me.CollectionToolStripMenuItem.Text = "Collection"
@@ -101,13 +102,13 @@ Partial Class Form1
         'PlayableCharactersToolStripMenuItem
         '
         Me.PlayableCharactersToolStripMenuItem.Name = "PlayableCharactersToolStripMenuItem"
-        Me.PlayableCharactersToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.PlayableCharactersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.PlayableCharactersToolStripMenuItem.Text = "Playable Characters"
         '
         'PlayableStagesToolStripMenuItem
         '
         Me.PlayableStagesToolStripMenuItem.Name = "PlayableStagesToolStripMenuItem"
-        Me.PlayableStagesToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.PlayableStagesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.PlayableStagesToolStripMenuItem.Text = "Playable Stages"
         '
         'StatsToolStripMenuItem
@@ -120,8 +121,21 @@ Partial Class Form1
         'CosmoPointsToolStripMenuItem
         '
         Me.CosmoPointsToolStripMenuItem.Name = "CosmoPointsToolStripMenuItem"
-        Me.CosmoPointsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CosmoPointsToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.CosmoPointsToolStripMenuItem.Text = "Cosmo Points"
+        '
+        'ProgressToolStripMenuItem
+        '
+        Me.ProgressToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BattleOfGoldToolStripMenuItem})
+        Me.ProgressToolStripMenuItem.Name = "ProgressToolStripMenuItem"
+        Me.ProgressToolStripMenuItem.Size = New System.Drawing.Size(64, 20)
+        Me.ProgressToolStripMenuItem.Text = "Progress"
+        '
+        'BattleOfGoldToolStripMenuItem
+        '
+        Me.BattleOfGoldToolStripMenuItem.Name = "BattleOfGoldToolStripMenuItem"
+        Me.BattleOfGoldToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.BattleOfGoldToolStripMenuItem.Text = "Battle of Gold"
         '
         'Label1
         '
@@ -164,18 +178,11 @@ Partial Class Form1
         Me.lblPlatform.Text = "..."
         Me.lblPlatform.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
-        'ProgressToolStripMenuItem
+        'CharacterModelsToolStripMenuItem
         '
-        Me.ProgressToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BattleOfGoldToolStripMenuItem})
-        Me.ProgressToolStripMenuItem.Name = "ProgressToolStripMenuItem"
-        Me.ProgressToolStripMenuItem.Size = New System.Drawing.Size(64, 20)
-        Me.ProgressToolStripMenuItem.Text = "Progress"
-        '
-        'BattleOfGoldToolStripMenuItem
-        '
-        Me.BattleOfGoldToolStripMenuItem.Name = "BattleOfGoldToolStripMenuItem"
-        Me.BattleOfGoldToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.BattleOfGoldToolStripMenuItem.Text = "Battle of Gold"
+        Me.CharacterModelsToolStripMenuItem.Name = "CharacterModelsToolStripMenuItem"
+        Me.CharacterModelsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CharacterModelsToolStripMenuItem.Text = "Character Models"
         '
         'Form1
         '
@@ -217,5 +224,5 @@ Partial Class Form1
     Friend WithEvents PlayableStagesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ProgressToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BattleOfGoldToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-
+    Friend WithEvents CharacterModelsToolStripMenuItem As ToolStripMenuItem
 End Class

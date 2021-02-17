@@ -18,6 +18,7 @@
         PlayableCharacters
         AssistPhrases
         PlayableStages
+        CharacterModels
     End Enum
 
     Public Sub New(ByVal CollectionTarget As CollectionType)
@@ -33,6 +34,10 @@
                 Me.Text &= " - Playable Stages"
                 DescriptionFile = "DESC_PLAYABLESTAGES.TXT"
                 ListCount = Savedata.PLAYABLESTAGECOUNT
+            Case CollectionType.CharacterModels
+                Me.Text &= " - Character Models"
+                DescriptionFile = "DESC_PLAYABLECHARACTERS.txt"
+                ListCount = Savedata.PLAYABLECHARACTERCOUNT
         End Select
         Target = CollectionTarget
     End Sub
@@ -100,6 +105,9 @@
                 Case CollectionType.PlayableStages
                     If Savedata.IsLockedPlayableStage(I) Then Continue For
                     UnlockedIndexes.Add(I)
+                Case CollectionType.CharacterModels
+                    If Savedata.GetGalleryCharModelState(I) = 0 Then Continue For
+                    UnlockedIndexes.Add(I)
             End Select
         Next I
 
@@ -136,6 +144,8 @@
                 'placeholder
             Case CollectionType.PlayableStages
                 Savedata.LockPlayableStage(ItemIdx)
+            Case CollectionType.CharacterModels
+                Savedata.SetGalleryCharModelState(ItemIdx, 0)
         End Select
     End Sub
 
@@ -147,6 +157,8 @@
                 'placeholder
             Case CollectionType.PlayableStages
                 Savedata.UnlockPlayableStage(ItemIdx)
+            Case CollectionType.CharacterModels
+                Savedata.SetGalleryCharModelState(ItemIdx, 3)
         End Select
     End Sub
 

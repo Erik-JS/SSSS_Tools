@@ -231,8 +231,16 @@
             SetInt32(&H358 + charindex * &H30 + bbaindex * 4, state)
         End Sub
 
-        Public Shared Function GetGalleryBBAState(ByVal charindex As Integer, ByVal bbaindex As Integer)
+        Public Shared Function GetGalleryBBAState(ByVal charindex As Integer, ByVal bbaindex As Integer) As Integer
             Return GetInt32(&H358 + charindex * &H30 + bbaindex * 4)
+        End Function
+
+        Public Shared Sub SetGalleryCharModelState(ByVal charindex As Integer, ByVal newstate As Integer)
+            SetInt32(&H3B10 + charindex * 4, newstate)
+        End Sub
+
+        Public Shared Function GetGalleryCharModelState(ByVal charindex As Integer) As Integer
+            Return GetInt32(&H3B10 + charindex * 4)
         End Function
 
     End Class
