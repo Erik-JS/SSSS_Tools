@@ -3,8 +3,6 @@
     Public Class Savedata
 
         Public Const EXPECTEDFILESIZE As Integer = 25336
-        Public Const PLAYABLECHARACTERCOUNT As Integer = 147
-        Public Const PLAYABLESTAGECOUNT As Integer = 40
 
         Public Shared Content() As Byte = Nothing
         Public Shared IsLittleEndian As Boolean
@@ -243,23 +241,6 @@
             Return GetInt32(&H3B10 + charindex * 4)
         End Function
 
-    End Class
-
-    ' XHashtable = Hashtable + List
-    ' Hashtable by itself doesn't care about order of items
-    ' KeyList will keep track of the order
-    Public Class XHashtable
-        Inherits Hashtable
-        Public KeysList As List(Of Object)
-
-        Public Sub New()
-            KeysList = New List(Of Object)
-        End Sub
-
-        Public Overrides Sub Add(key As Object, value As Object)
-            MyBase.Add(key, value)
-            KeysList.Add(key)
-        End Sub
     End Class
 
     'http://blog.codinghorror.com/determining-build-date-the-hard-way/
