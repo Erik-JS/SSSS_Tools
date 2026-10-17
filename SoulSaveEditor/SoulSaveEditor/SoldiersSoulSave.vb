@@ -7,14 +7,13 @@
         Public Shared Content() As Byte = Nothing
         Public Shared IsLittleEndian As Boolean
 
-        Public Shared Function LoadFromFile(ByVal file As String, ByVal flagPC As Boolean) As Boolean
+        Public Shared Function LoadFromFile(ByVal file As String) As Boolean
             ' it's called from form1, so file probably exists...
             Try
                 Dim b() As Byte = IO.File.ReadAllBytes(file)
                 If BitConverter.ToInt32(b, 0) <> &H56415323 Then
                     Dim strMsg As String = "Missing #SAV identifier."
-                    ' make sure the part about decrypting the file only appears if the file is supposed to be from PS3
-                    If Not flagPC Then strMsg &= vbCrLf & vbCrLf & "If you think this is the correct file, make sure it has been decrypted first."
+                    strMsg &= vbCrLf & vbCrLf & "PS3 / PS4: If you think this is the correct file, make sure it has been decrypted first."
                     MessageBox.Show(strMsg, "Invalid file", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     Return False
                 End If
@@ -23,12 +22,29 @@
                     Return False
                 End If
                 Content = b
+                CheckSavedataEndianness()
                 Return True
             Catch ex As Exception
                 MessageBox.Show("Exception in LoadFromFile" & vbCrLf & vbCrLf & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Return False
             End Try
         End Function
+
+        Public Shared Sub CheckSavedataEndianness()
+            Dim v1 As Integer = BitConverter.ToInt32(Content, &H8)
+            Dim v2 As Integer = BitConverter.ToInt32(Content, &H10)
+            If v1 = 1 AndAlso v2 = &H40000 Then
+                IsLittleEndian = True
+            ElseIf v1 = &H1000000 AndAlso v2 = &H400 Then
+                IsLittleEndian = False
+            Else
+                Dim message As String = "The endianness (byte order) used in the save file couldn't be determined." & vbCrLf & vbCrLf &
+                    "Select YES for little-endian. (PC, PS4)" & vbCrLf & vbCrLf &
+                    "Select NO for big-endian. (PS3)"
+                Dim response As DialogResult = MessageBox.Show(message, "Endianness check", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+                IsLittleEndian = (response = DialogResult.Yes)
+            End If
+        End Sub
 
         Public Shared Function SaveToFile(ByVal file As String) As Boolean
             Try

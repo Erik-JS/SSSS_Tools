@@ -16,15 +16,12 @@
 
     Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
         Dim openDialog As New OpenFileDialog
-        Dim IsPCVersion As Boolean = True
 
         openDialog.Filter = "PS3 PS4 PC|*.dat; savedata; ssss-savedata0|All files|*.*"
 
         If openDialog.ShowDialog() <> Windows.Forms.DialogResult.OK Then Exit Sub
 
-        If System.IO.Path.GetExtension(openDialog.FileName).ToUpper() = ".DAT" Then IsPCVersion = False
-
-        If Savedata.LoadFromFile(openDialog.FileName, IsPCVersion) Then
+        If Savedata.LoadFromFile(openDialog.FileName) Then
             CollectionToolStripMenuItem.Enabled = True
             StatsToolStripMenuItem.Enabled = True
             SaveToolStripMenuItem.Enabled = True
@@ -32,8 +29,7 @@
             ProgressToolStripMenuItem.Enabled = True
             lblFile.Text = openDialog.FileName
             lblFile.ForeColor = Color.Blue
-            Savedata.IsLittleEndian = IsPCVersion
-            lblPlatform.Text = If(IsPCVersion, "PC", "PS3")
+            lblPlatform.Text = If(Savedata.IsLittleEndian, "PC / PS4", "PS3")
         End If
     End Sub
 
