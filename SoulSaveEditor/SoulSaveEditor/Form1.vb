@@ -18,7 +18,7 @@
         Dim openDialog As New OpenFileDialog
         Dim IsPCVersion As Boolean = True
 
-        openDialog.Filter = "PS3 or PC|*.dat; ssss-savedata0"
+        openDialog.Filter = "PS3 PS4 PC|*.dat; savedata; ssss-savedata0|All files|*.*"
 
         If openDialog.ShowDialog() <> Windows.Forms.DialogResult.OK Then Exit Sub
 
@@ -60,7 +60,7 @@
 
     Private Sub SaveAsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaveAsToolStripMenuItem.Click
         Dim saveDialog As New SaveFileDialog
-        saveDialog.Filter = If(Savedata.IsLittleEndian, "ssss-savedata*|ssss-savedata*", "*.dat|*.dat")
+        saveDialog.Filter = "*.*|*.*"
         If saveDialog.ShowDialog() <> Windows.Forms.DialogResult.OK Then Exit Sub
         AttemptSave(saveDialog.FileName)
     End Sub
