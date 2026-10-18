@@ -32,6 +32,7 @@ Partial Class Form1
         Me.CollectionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PlayableCharactersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PlayableStagesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CharacterModelsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CosmoPointsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,7 +41,6 @@ Partial Class Form1
         Me.lblFile = New System.Windows.Forms.Label()
         Me.lblBuild = New System.Windows.Forms.Label()
         Me.lblPlatform = New System.Windows.Forms.Label()
-        Me.CharacterModelsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -64,32 +64,32 @@ Partial Class Form1
         '
         Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
         Me.OpenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.OpenToolStripMenuItem.Text = "Open"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
         Me.SaveToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SaveToolStripMenuItem.Text = "Save"
         '
         'SaveAsToolStripMenuItem
         '
         Me.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem"
-        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.SaveAsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SaveAsToolStripMenuItem.Text = "Save as..."
         '
         'mnuSeparator1
         '
         Me.mnuSeparator1.Name = "mnuSeparator1"
-        Me.mnuSeparator1.Size = New System.Drawing.Size(143, 6)
+        Me.mnuSeparator1.Size = New System.Drawing.Size(177, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.F4), System.Windows.Forms.Keys)
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(146, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'CollectionToolStripMenuItem
@@ -102,14 +102,20 @@ Partial Class Form1
         'PlayableCharactersToolStripMenuItem
         '
         Me.PlayableCharactersToolStripMenuItem.Name = "PlayableCharactersToolStripMenuItem"
-        Me.PlayableCharactersToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PlayableCharactersToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.PlayableCharactersToolStripMenuItem.Text = "Playable Characters"
         '
         'PlayableStagesToolStripMenuItem
         '
         Me.PlayableStagesToolStripMenuItem.Name = "PlayableStagesToolStripMenuItem"
-        Me.PlayableStagesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.PlayableStagesToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.PlayableStagesToolStripMenuItem.Text = "Playable Stages"
+        '
+        'CharacterModelsToolStripMenuItem
+        '
+        Me.CharacterModelsToolStripMenuItem.Name = "CharacterModelsToolStripMenuItem"
+        Me.CharacterModelsToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.CharacterModelsToolStripMenuItem.Text = "Character Models"
         '
         'StatsToolStripMenuItem
         '
@@ -149,15 +155,14 @@ Partial Class Form1
         '
         'lblFile
         '
-        Me.lblFile.AutoSize = True
         Me.lblFile.BackColor = System.Drawing.Color.White
-        Me.lblFile.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFile.Font = New System.Drawing.Font("Courier New", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFile.ForeColor = System.Drawing.Color.Blue
         Me.lblFile.Location = New System.Drawing.Point(12, 50)
         Me.lblFile.Name = "lblFile"
-        Me.lblFile.Size = New System.Drawing.Size(247, 13)
+        Me.lblFile.Size = New System.Drawing.Size(503, 44)
         Me.lblFile.TabIndex = 2
-        Me.lblFile.Text = "Please go to File -> Open, or press Ctrl+O."
+        Me.lblFile.Text = "«Press Ctrl+O to open a savedata file.»"
         '
         'lblBuild
         '
@@ -177,12 +182,6 @@ Partial Class Form1
         Me.lblPlatform.TabIndex = 4
         Me.lblPlatform.Text = "..."
         Me.lblPlatform.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'CharacterModelsToolStripMenuItem
-        '
-        Me.CharacterModelsToolStripMenuItem.Name = "CharacterModelsToolStripMenuItem"
-        Me.CharacterModelsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.CharacterModelsToolStripMenuItem.Text = "Character Models"
         '
         'Form1
         '
@@ -218,11 +217,11 @@ Partial Class Form1
     Friend WithEvents StatsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CosmoPointsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents lblFile As System.Windows.Forms.Label
     Friend WithEvents lblBuild As System.Windows.Forms.Label
     Friend WithEvents lblPlatform As System.Windows.Forms.Label
     Friend WithEvents PlayableStagesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ProgressToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BattleOfGoldToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CharacterModelsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents lblFile As Label
 End Class
