@@ -44,10 +44,16 @@ namespace TDBMaker
             Cursor.Current = Cursors.WaitCursor;
             foreach (string file in itemArray)
             {
-                if (File.GetAttributes(file).HasFlag(FileAttributes.Directory))
+                if (Directory.Exists(file))
                 {
                     IgnoreCount++;
                     ShowMessageBox(suppress, file + "\n\nThis item cannot be processed because it is a directory.", "ConvertItems");
+                    continue;
+                }
+                if (!File.Exists(file))
+                {
+                    IgnoreCount++;
+                    ShowMessageBox(suppress, file + "\n\nThis item cannot be processed because it does not point to an existing file.", "ConvertItems");
                     continue;
                 }
                 string ext = Path.GetExtension(file).ToLower();
