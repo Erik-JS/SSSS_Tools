@@ -30,7 +30,7 @@ namespace TDBMaker
             if (droppedFiles.Length >= 10)
             {
                 DialogResult dr = MessageBox.Show("You dropped " + droppedFiles.Length + " items into TDB Maker. Individual messages about overwriting and conversion result for all items will be suppressed.", "TDB Maker", MessageBoxButtons.OKCancel);
-                if (dr == System.Windows.Forms.DialogResult.Cancel)
+                if (dr == DialogResult.Cancel)
                     return;
                 suppress = true;
             }
@@ -89,12 +89,12 @@ namespace TDBMaker
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "TDB|*.tdb";
-            if (ofd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            if (ofd.ShowDialog() != DialogResult.OK)
                 return;
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "XML|*.xml";
             sfd.FileName = Path.GetFileNameWithoutExtension(ofd.FileName) + ".xml";
-            if (sfd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            if (sfd.ShowDialog() != DialogResult.OK)
                 return;
             ConvertToXML(ofd.FileName, sfd.FileName);
         }
@@ -103,12 +103,12 @@ namespace TDBMaker
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "XML|*.xml";
-            if (ofd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            if (ofd.ShowDialog() != DialogResult.OK)
                 return;
             SaveFileDialog sfd = new SaveFileDialog();
             sfd.Filter = "TDB|*.tdb";
             sfd.FileName = Path.GetFileNameWithoutExtension(ofd.FileName) + ".tdb";
-            if (sfd.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            if (sfd.ShowDialog() != DialogResult.OK)
                 return;
             ConvertToTDB(ofd.FileName, sfd.FileName);
         }
