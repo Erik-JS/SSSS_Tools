@@ -47,8 +47,7 @@ namespace TDBMaker
                 if (File.GetAttributes(file).HasFlag(FileAttributes.Directory))
                 {
                     IgnoreCount++;
-                    if (!suppress)
-                        MessageBox.Show(file + "\n\nThis item cannot be processed because it is a directory.");
+                    ShowMessageBox(suppress, file + "\n\nThis item cannot be processed because it is a directory.", "ConvertItems");
                     continue;
                 }
                 string ext = Path.GetExtension(file).ToLower();
@@ -65,8 +64,7 @@ namespace TDBMaker
                 else
                 {
                     IgnoreCount++;
-                    if (!suppress)
-                        MessageBox.Show(file + "\n\nThis item cannot be processed because it has no .tdb or .xml extension!");
+                    ShowMessageBox(suppress, file + "\n\nThis item cannot be processed because it has no .tdb or .xml extension!", "ConvertItems");
                 }
             }
             Cursor.Current = Cursors.Default;
@@ -125,15 +123,11 @@ namespace TDBMaker
             }
             if (TDBHandler.Xml2Tdb(source, destination))
             {
-                if (!suppressendmessage)
-                    MessageBox.Show("Done: " + Path.GetFileName(source) + " => " + Path.GetFileName(destination), "Xml2Tdb");
+                ShowMessageBox(suppressendmessage, "Done: " + Path.GetFileName(source) + " => " + Path.GetFileName(destination), "Xml2Tdb");
                 ConversionDoneCount++;
             }
             else
-            {
-                if (!suppressendmessage)
-                    MessageBox.Show("Failed: " + Path.GetFileName(source) + " => " + Path.GetFileName(destination), "Xml2Tdb");
-            }
+                ShowMessageBox(suppressendmessage, "Failed: " + Path.GetFileName(source) + " => " + Path.GetFileName(destination), "Xml2Tdb");
         }
 
         public static void ConvertToXML(string source, string destination, bool overwritewarning = false, bool suppressendmessage = false)
@@ -146,15 +140,17 @@ namespace TDBMaker
             }
             if (TDBHandler.Tdb2Xml(source, destination))
             {
-                if(!suppressendmessage)
-                    MessageBox.Show("Done: " + Path.GetFileName(source) + " => " + Path.GetFileName(destination), "Tdb2Xml");
+                ShowMessageBox(suppressendmessage, "Done: " + Path.GetFileName(source) + " => " + Path.GetFileName(destination), "Tdb2Xml");
                 ConversionDoneCount++;
             }
             else
-            {
-                if(!suppressendmessage)
-                    MessageBox.Show("Failed: " + Path.GetFileName(source) + " => " + Path.GetFileName(destination), "Tdb2Xml");
-            }
+                ShowMessageBox(suppressendmessage, "Failed: " + Path.GetFileName(source) + " => " + Path.GetFileName(destination), "Tdb2Xml");
+        }
+
+        public static DialogResult ShowMessageBox(bool suppress, string message, string caption, MessageBoxButtons buttons = MessageBoxButtons.OK, MessageBoxIcon icon = MessageBoxIcon.None)
+        {
+            if (suppress) return DialogResult.None;
+            return MessageBox.Show(message, caption, buttons, icon);
         }
 
     }
