@@ -92,4 +92,9 @@
     Private Sub CharacterModelsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CharacterModelsToolStripMenuItem.Click
         ShowCollectionEditForm(frmCollection.CollectionType.CharacterModels)
     End Sub
+
+    Private Sub TimePlayedToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TimePlayedToolStripMenuItem.Click
+        Dim timeform As New frmTime()
+        If timeform.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then lblFile.ForeColor = Color.Red
+    End Sub
 End Class

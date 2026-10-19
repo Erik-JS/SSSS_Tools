@@ -7,6 +7,12 @@
         Public Shared Content() As Byte = Nothing
         Public Shared IsLittleEndian As Boolean
 
+        Private Shared ReadOnly Property FPS As Integer
+            Get
+                Return If(IsLittleEndian, 60, 30)
+            End Get
+        End Property
+
         Public Shared Function LoadFromFile(ByVal file As String) As Boolean
             ' it's called from form1, so file probably exists...
             Try
@@ -191,19 +197,19 @@
         End Sub
 
         Public Shared Sub SetTimeGameTotal(ByVal seconds As Integer)
-            SetInt32(&H388C, seconds * 60)
+            SetInt32(&H388C, seconds * FPS)
         End Sub
 
         Public Shared Function GetTimeGameTotal() As Integer
-            Return GetInt32(&H388C) / 60
+            Return GetInt32(&H388C) / FPS
         End Function
 
         Public Shared Sub SetTimeOnlinePlay(ByVal seconds As Integer)
-            SetInt32(&H3890, seconds * 60)
+            SetInt32(&H3890, seconds * FPS)
         End Sub
 
         Public Shared Function GetTimeOnlinePlay() As Integer
-            Return GetInt32(&H3890) / 60
+            Return GetInt32(&H3890) / FPS
         End Function
 
         Public Enum ItemState As Integer
