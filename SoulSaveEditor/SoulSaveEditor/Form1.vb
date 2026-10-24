@@ -97,4 +97,8 @@
         Dim timeform As New frmTime()
         If timeform.ShowDialog(Me) = Windows.Forms.DialogResult.OK Then lblFile.ForeColor = Color.Red
     End Sub
+
+    Private Sub AssistPhrasesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssistPhrasesToolStripMenuItem.Click
+        ShowCollectionEditForm(frmCollection.CollectionType.AssistPhrases)
+    End Sub
 End Class

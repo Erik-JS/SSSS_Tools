@@ -35,13 +35,14 @@ Partial Class Form1
         Me.CharacterModelsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StatsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CosmoPointsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TimePlayedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BattleOfGoldToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblFile = New System.Windows.Forms.Label()
         Me.lblBuild = New System.Windows.Forms.Label()
         Me.lblPlatform = New System.Windows.Forms.Label()
-        Me.TimePlayedToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AssistPhrasesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -95,7 +96,7 @@ Partial Class Form1
         '
         'CollectionToolStripMenuItem
         '
-        Me.CollectionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PlayableCharactersToolStripMenuItem, Me.PlayableStagesToolStripMenuItem, Me.CharacterModelsToolStripMenuItem})
+        Me.CollectionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PlayableCharactersToolStripMenuItem, Me.PlayableStagesToolStripMenuItem, Me.CharacterModelsToolStripMenuItem, Me.AssistPhrasesToolStripMenuItem})
         Me.CollectionToolStripMenuItem.Name = "CollectionToolStripMenuItem"
         Me.CollectionToolStripMenuItem.Size = New System.Drawing.Size(73, 20)
         Me.CollectionToolStripMenuItem.Text = "Collection"
@@ -128,8 +129,14 @@ Partial Class Form1
         'CosmoPointsToolStripMenuItem
         '
         Me.CosmoPointsToolStripMenuItem.Name = "CosmoPointsToolStripMenuItem"
-        Me.CosmoPointsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CosmoPointsToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
         Me.CosmoPointsToolStripMenuItem.Text = "Cosmo Points"
+        '
+        'TimePlayedToolStripMenuItem
+        '
+        Me.TimePlayedToolStripMenuItem.Name = "TimePlayedToolStripMenuItem"
+        Me.TimePlayedToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.TimePlayedToolStripMenuItem.Text = "Time Played"
         '
         'ProgressToolStripMenuItem
         '
@@ -184,11 +191,11 @@ Partial Class Form1
         Me.lblPlatform.Text = "..."
         Me.lblPlatform.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
-        'TimePlayedToolStripMenuItem
+        'AssistPhrasesToolStripMenuItem
         '
-        Me.TimePlayedToolStripMenuItem.Name = "TimePlayedToolStripMenuItem"
-        Me.TimePlayedToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.TimePlayedToolStripMenuItem.Text = "Time Played"
+        Me.AssistPhrasesToolStripMenuItem.Name = "AssistPhrasesToolStripMenuItem"
+        Me.AssistPhrasesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AssistPhrasesToolStripMenuItem.Text = "Assist Phrases"
         '
         'Form1
         '
@@ -232,4 +239,5 @@ Partial Class Form1
     Friend WithEvents CharacterModelsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents lblFile As Label
     Friend WithEvents TimePlayedToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AssistPhrasesToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -25,6 +25,11 @@
                 CollectionItems = Descriptions.PlayableCharacters
             Case CollectionType.AssistPhrases
                 Me.Text &= " - Assist Phrases"
+                Dim AssistPhraseList As New List(Of String)
+                For I As Integer = 0 To Descriptions.AssistPhrases.Length - 1
+                    AssistPhraseList.Add((I + 1).ToString("D3") & ": " & Descriptions.AssistPhrases(I).Quote)
+                Next I
+                CollectionItems = AssistPhraseList.ToArray()
             Case CollectionType.PlayableStages
                 Me.Text &= " - Playable Stages"
                 CollectionItems = Descriptions.PlayableStages
@@ -68,7 +73,8 @@
                     If Savedata.IsLockedPlayableCharacter(I) Then Continue For
                     UnlockedIndexes.Add(I)
                 Case CollectionType.AssistPhrases
-                    'placeholder
+                    If Savedata.GetAssistPhraseState(I) = Savedata.AssistPhraseState.Locked Then Continue For
+                    UnlockedIndexes.Add(I)
                 Case CollectionType.PlayableStages
                     If Savedata.IsLockedPlayableStage(I) Then Continue For
                     UnlockedIndexes.Add(I)
@@ -108,7 +114,7 @@
             Case CollectionType.PlayableCharacters
                 Savedata.LockPlayableCharacter(ItemIdx)
             Case CollectionType.AssistPhrases
-                'placeholder
+                Savedata.SetAssistPhraseState(ItemIdx, Savedata.AssistPhraseState.Locked)
             Case CollectionType.PlayableStages
                 Savedata.LockPlayableStage(ItemIdx)
             Case CollectionType.CharacterModels
@@ -121,7 +127,7 @@
             Case CollectionType.PlayableCharacters
                 Savedata.UnlockPlayableCharacter(ItemIdx)
             Case CollectionType.AssistPhrases
-                'placeholder
+                Savedata.SetAssistPhraseState(ItemIdx, Savedata.AssistPhraseState.UnlockedNotSeen)
             Case CollectionType.PlayableStages
                 Savedata.UnlockPlayableStage(ItemIdx)
             Case CollectionType.CharacterModels

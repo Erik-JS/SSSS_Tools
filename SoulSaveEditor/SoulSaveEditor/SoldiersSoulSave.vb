@@ -263,6 +263,20 @@
             Return GetInt32(&H3B10 + charindex * 4)
         End Function
 
+        Public Enum AssistPhraseState As Integer
+            Locked = 0
+            UnlockedNotSeen = 1
+            UnlockedSeen = 2
+        End Enum
+
+        Public Shared Sub SetAssistPhraseState(ByVal index As Integer, ByVal State As AssistPhraseState)
+            SetInt32(&H4B7C + index * 8, State)
+        End Sub
+
+        Public Shared Function GetAssistPhraseState(ByVal index As Integer) As AssistPhraseState
+            Return GetInt32(&H4B7C + index * 8)
+        End Function
+
     End Class
 
     'http://blog.codinghorror.com/determining-build-date-the-hard-way/
