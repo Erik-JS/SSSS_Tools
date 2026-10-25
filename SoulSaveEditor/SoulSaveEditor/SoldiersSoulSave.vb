@@ -85,6 +85,23 @@
             End If
         End Sub
 
+        Public Shared Function GetInt16(ByVal Index As Integer) As Short
+            Dim bytes() As Byte = {Content(Index), Content(Index + 1)}
+            If Not IsLittleEndian Then Array.Reverse(bytes)
+            Return BitConverter.ToInt16(bytes, 0)
+        End Function
+
+        Public Shared Sub SetInt16(ByVal Index As Integer, ByVal Value As Short)
+            Dim bytes() As Byte = BitConverter.GetBytes(Value)
+            If IsLittleEndian Then
+                Content(Index) = bytes(0)
+                Content(Index + 1) = bytes(1)
+            Else
+                Content(Index) = bytes(1)
+                Content(Index + 1) = bytes(0)
+            End If
+        End Sub
+
         Public Shared Function GetCosmoPointsCurrent() As Integer
             Return GetInt32(&H6190)
         End Function
@@ -275,6 +292,22 @@
 
         Public Shared Function GetAssistPhraseState(ByVal index As Integer) As AssistPhraseState
             Return GetInt32(&H4B7C + index * 8)
+        End Function
+
+        Public Shared Sub SetEquippedAssistPhrase(ByVal charindex As Integer, ByVal slotindex As Integer, ByVal assistphraseid As Short)
+            SetInt16(&H10F0 + charindex * &H12 + slotindex * 2, assistphraseid)
+        End Sub
+
+        Public Shared Function GetEquippedAssistPhrase(ByVal charindex As Integer, ByVal slotindex As Integer) As Short
+            Return GetInt16(&H10F0 + charindex * &H12 + slotindex * 2)
+        End Function
+
+        Public Shared Sub SetCharAssistPhraseSlotCapacity(ByVal charindex As Integer, ByVal capacity As Byte)
+            Content(&H1100 + charindex * &H12) = capacity
+        End Sub
+
+        Public Shared Function GetCharAssistPhraseSlotCapacity(ByVal charindex As Integer) As Byte
+            Return Content(&H1100 + charindex * &H12)
         End Function
 
     End Class
