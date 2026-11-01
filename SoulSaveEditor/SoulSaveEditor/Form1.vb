@@ -101,4 +101,9 @@
     Private Sub AssistPhrasesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssistPhrasesToolStripMenuItem.Click
         ShowCollectionEditForm(frmCollection.CollectionType.AssistPhrases)
     End Sub
+
+    Private Sub AssistPhrasesEquipToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AssistPhrasesEquipToolStripMenuItem.Click
+        Dim apform As New frmAssistPhrases()
+        If apform.ShowDialog(Me) = DialogResult.OK Then lblFile.ForeColor = Color.Red
+    End Sub
 End Class
